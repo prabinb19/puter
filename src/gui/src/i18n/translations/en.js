@@ -237,6 +237,7 @@ const en = {
         refer_friends_social_media_c2a: `Get 1 GB of free storage on Puter.com!`,
         refresh: 'Refresh',
         release_address_confirmation: `Are you sure you want to release this address?`,
+        remove_profile_picture: 'Remove Profile Picture',
         remove_from_taskbar:'Remove from Taskbar',
         rename: 'Rename',
         repeat: 'Repeat',
