@@ -35,50 +35,50 @@ export default {
 
         // profile picture
         h += `<div style="overflow: hidden; display: flex; margin-bottom: 20px; flex-direction: column; align-items: center;">`;
-            h += `<div class="profile-picture change-profile-picture" style="background-image: url('${html_encode(window.user?.profile?.picture ?? window.icons['profile.svg'])}');">`;
-            h += `</div>`;
+        h += `<div class="profile-picture change-profile-picture" style="background-image: url('${html_encode(window.user?.profile?.picture ?? window.icons['profile.svg'])}');">`;
+        h += `</div>`;
         h += `</div>`;
 
         // change password button
         if(!window.user.is_temp){
             h += `<div class="settings-card">`;
-                h += `<strong>${i18n('password')}</strong>`;
-                h += `<div style="flex-grow:1;">`;
-                    h += `<button class="button change-password" style="float:right;">${i18n('change_password')}</button>`;
-                h += `</div>`;
+            h += `<strong>${i18n('password')}</strong>`;
+            h += `<div style="flex-grow:1;">`;
+            h += `<button class="button change-password" style="float:right;">${i18n('change_password')}</button>`;
+            h += `</div>`;
             h += `</div>`;
         }
 
         // change username button
         h += `<div class="settings-card">`;
-            h += `<div>`;
-                h += `<strong style="display:block;">${i18n('username')}</strong>`;
-                h += `<span class="username" style="display:block; margin-top:5px;">${html_encode(window.user.username)}</span>`;
-            h += `</div>`;
-            h += `<div style="flex-grow:1;">`;
-                h += `<button class="button change-username" style="float:right;">${i18n('change_username')}</button>`;
-            h += `</div>`
+        h += `<div>`;
+        h += `<strong style="display:block;">${i18n('username')}</strong>`;
+        h += `<span class="username" style="display:block; margin-top:5px;">${html_encode(window.user.username)}</span>`;
+        h += `</div>`;
+        h += `<div style="flex-grow:1;">`;
+        h += `<button class="button change-username" style="float:right;">${i18n('change_username')}</button>`;
+        h += `</div>`
         h += `</div>`;
 
         // change email button
         if(window.user.email){
             h += `<div class="settings-card">`;
-                h += `<div>`;
-                    h += `<strong style="display:block;">${i18n('email')}</strong>`;
-                    h += `<span class="user-email" style="display:block; margin-top:5px;">${html_encode(window.user.email)}</span>`;
-                h += `</div>`;
-                h += `<div style="flex-grow:1;">`;
-                    h += `<button class="button change-email" style="float:right;">${i18n('change_email')}</button>`;
-                h += `</div>`;
+            h += `<div>`;
+            h += `<strong style="display:block;">${i18n('email')}</strong>`;
+            h += `<span class="user-email" style="display:block; margin-top:5px;">${html_encode(window.user.email)}</span>`;
+            h += `</div>`;
+            h += `<div style="flex-grow:1;">`;
+            h += `<button class="button change-email" style="float:right;">${i18n('change_email')}</button>`;
+            h += `</div>`;
             h += `</div>`;
         }
 
         // 'Delete Account' button
         h += `<div class="settings-card settings-card-danger">`;
-            h += `<strong style="display: inline-block;">${i18n("delete_account")}</strong>`;
-            h += `<div style="flex-grow:1;">`;
-                h += `<button class="button button-danger delete-account" style="float:right;">${i18n("delete_account")}</button>`;
-            h += `</div>`;
+        h += `<strong style="display: inline-block;">${i18n("delete_account")}</strong>`;
+        h += `<div style="flex-grow:1;">`;
+        h += `<button class="button button-danger delete-account" style="float:right;">${i18n("delete_account")}</button>`;
+        h += `</div>`;
         h += `</div>`;
 
         return h;
@@ -147,7 +147,7 @@ export default {
                 is_dir: true,
                 is_openFileDialog: true,
                 selectable_body: false,
-            });    
+            });
         })
 
         $el_window.on('file_opened', async function(e){

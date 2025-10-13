@@ -18,6 +18,7 @@ export default [
         // Top-level and tools use Node
         files: [
             "tools/**/*.js",
+            "webpack.config.js",
         ],
         languageOptions: {
             globals: {
