@@ -1218,7 +1218,7 @@ span.header-sort-icon img {
     margin: 0;
     font-weight: bold;
     font-size: 13px;
-    color: #8f96a3;
+    color: var(--window-sidebar-color);
     text-shadow: 1px 1px rgb(247 247 247 / 15%);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -1234,7 +1234,7 @@ span.header-sort-icon img {
 }
 
 .window-sidebar-item:hover, .window-sidebar-item.has-open-contextmenu {
-    background-color: rgba(243, 243, 243, 0.8);
+    background-color: hsla(var(--window-sidebar-hue), var(--window-sidebar-saturation), var(--window-sidebar-lightness), 0.3);
     cursor: pointer;
 }
 
@@ -1243,7 +1243,7 @@ span.header-sort-icon img {
     margin-top: 2px;
     padding: 4px;
     border-radius: 3px;
-    color: #444444;
+    color: var(--window-sidebar-color);
     font-size: 13px;
     cursor: pointer;
     transition: 0.15s background-color;
@@ -1255,7 +1255,7 @@ span.header-sort-icon img {
 }
 
 .window-sidebar-item-active, .window-sidebar-item-drag-active, .window-sidebar-item-active:hover {
-    background-color: #fefeff;
+    background-color: hsla(var(--window-sidebar-hue), var(--window-sidebar-saturation), var(--window-sidebar-lightness), 0.5);
 }
 
 .window-sidebar-item-placeholder {
