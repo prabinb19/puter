@@ -1481,6 +1481,47 @@ span.header-sort-icon img {
     margin-top: 10px;
 }
 
+/* Alert Type-Specific Styling */
+.alert-type-info .window-body {
+    border: 2px solid #2196F3;
+}
+
+.alert-type-info .window-alert-icon {
+    filter: drop-shadow(0 0 8px rgba(33, 150, 243, 0.3));
+}
+
+.alert-type-success .window-body {
+    border: 2px solid #4CAF50;
+}
+
+.alert-type-success .window-alert-icon {
+    filter: drop-shadow(0 0 8px rgba(76, 175, 80, 0.3));
+}
+
+.alert-type-warning .window-body {
+    border: 2px solid #FF9800;
+}
+
+.alert-type-warning .window-alert-icon {
+    filter: drop-shadow(0 0 8px rgba(255, 152, 0, 0.3));
+}
+
+.alert-type-error .window-body {
+    border: 2px solid #F44336;
+}
+
+.alert-type-error .window-alert-icon {
+    filter: drop-shadow(0 0 8px rgba(244, 67, 54, 0.3));
+}
+
+.alert-type-question .window-body {
+    border: 2px solid #9C27B0;
+}
+
+.alert-type-question .window-alert-icon {
+    filter: drop-shadow(0 0 8px rgba(156, 39, 176, 0.3));
+}
+
 .prompt-resp-button {
     margin-left: 10px;
 }
