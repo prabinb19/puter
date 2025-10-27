@@ -41,10 +41,32 @@ function UIAlert(options){
             ]
         }
 
-        // set body icon
-        options.body_icon = options.body_icon ?? window.icons['warning-sign.svg'];
-        if(options.type === 'success')
-            options.body_icon = window.icons['c-check.svg'];
+        // set default type if not provided (backward compatible)
+        if(!options.type){
+            options.type = 'warning';
+        }
+
+        // set body icon based on alert type
+        if(!options.body_icon){
+            switch(options.type){
+                case 'info':
+                    options.body_icon = window.icons['reminder.svg'];
+                    break;
+                case 'success':
+                    options.body_icon = window.icons['c-check.svg'];
+                    break;
+                case 'error':
+                    options.body_icon = window.icons['danger.svg'];
+                    break;
+                case 'question':
+                    options.body_icon = window.icons['question-sign.svg'];
+                    break;
+                case 'warning':
+                default:
+                    options.body_icon = window.icons['warning-sign.svg'];
+                    break;
+            }
+        }
 
         let santized_message = html_encode(options.message);
 
@@ -74,6 +96,16 @@ function UIAlert(options){
             h += `</div>`;
         }
 
+        // Get type-specific background color
+        const backgroundColors = {
+            'info': 'rgba(225, 242, 255, .95)',      // Light blue
+            'success': 'rgba(230, 248, 235, .95)',   // Light green
+            'warning': 'rgba(255, 243, 224, .95)',   // Light orange
+            'error': 'rgba(255, 235, 238, .95)',     // Light red
+            'question': 'rgba(243, 229, 245, .95)',  // Light purple
+        };
+        const backgroundColor = backgroundColors[options.type] || 'rgba(231, 238, 245, .95)';
+
         const el_window = await UIWindow({
             title: null,
             icon: null,
@@ -90,7 +122,7 @@ function UIAlert(options){
             draggable_body: options.draggable_body ?? true,
             allow_context_menu: false,
             show_in_taskbar: false,
-            window_class: 'window-alert',
+            window_class: 'window-alert alert-type-' + options.type,
             dominant: true,
             body_content: h,
             width: 350,
@@ -102,7 +134,7 @@ function UIAlert(options){
             body_css: {
                 width: 'initial',
                 padding: '20px',
-                'background-color': 'rgba(231, 238, 245, .95)',
+                'background-color': backgroundColor,
                 'backdrop-filter': 'blur(3px)',
             }
         });
