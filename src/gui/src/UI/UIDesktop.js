@@ -1145,6 +1145,73 @@ async function UIDesktop(options){
     // prepend toolbar to desktop
     $(ht).insertBefore(el_desktop);
 
+    // toolbar auto-hide functionality
+    (function initDynamicToolbar() {
+        let toolbarHideTimer = null;
+        let isToolbarVisible = true;
+        const HIDE_DELAY = 2000; // 2 seconds of inactivity
+        const MOUSE_PROXIMITY_THRESHOLD = 50;
+
+        const $toolbar = $('.toolbar');
+
+        function hideToolbar() {
+            if (isToolbarVisible) {
+                $toolbar.addClass('toolbar-hidden');
+                isToolbarVisible = false;
+            }
+        }
+
+        function showToolbar() {
+            if (!isToolbarVisible) {
+                $toolbar.removeClass('toolbar-hidden');
+                isToolbarVisible = true;
+            }
+            resetHideTimer();
+        }
+
+        function resetHideTimer() {
+            if (toolbarHideTimer) {
+                clearTimeout(toolbarHideTimer);
+            }
+            toolbarHideTimer = setTimeout(hideToolbar, HIDE_DELAY);
+        }
+
+        // Start the initial hide timer
+        resetHideTimer();
+
+        // Show toolbar when mouse moves near the top of the screen
+        $(document).on('mousemove', function(e) {
+            if (e.clientY <= MOUSE_PROXIMITY_THRESHOLD) {
+                showToolbar();
+            } else if (e.clientY > window.toolbar_height && isToolbarVisible) {
+                // Reset timer when mouse moves away from toolbar area
+                resetHideTimer();
+            }
+        });
+
+        // Keep toolbar visible when hovering over it
+        $toolbar.on('mouseenter', function() {
+            if (toolbarHideTimer) {
+                clearTimeout(toolbarHideTimer);
+            }
+        });
+
+        // Restart hide timer when mouse leaves toolbar
+        $toolbar.on('mouseleave', function() {
+            resetHideTimer();
+        });
+
+        // Show toolbar on any click event
+        $(document).on('click', function() {
+            showToolbar();
+        });
+
+        // Show toolbar when any toolbar button is interacted with
+        $(document).on('click', '.toolbar-btn', function() {
+            showToolbar();
+        });
+    })();
+
     // notification container
     $('body').append(`<div class="notification-container"><div class="notifications-close-all">${i18n('close_all')}</div></div>`);
 
